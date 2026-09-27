@@ -53,6 +53,8 @@ class MovieListing extends StatelessWidget {
                     fontSize: 16,
                     fontWeight: FontWeight.normal,
                   )),
+              Row(
+                children: [Text("Adult (£7.50)")])
             ])));
   }
 }
