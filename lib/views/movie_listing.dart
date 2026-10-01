@@ -5,6 +5,10 @@ import 'package:southsea_cinema/widgets/nav_drawer.dart';
 class MovieListing extends StatelessWidget {
   const MovieListing({super.key});
 
+  void setState(Null Function() totalPrice) {
+    int totalPrice;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,7 +58,26 @@ class MovieListing extends StatelessWidget {
                     fontWeight: FontWeight.normal,
                   )),
               Row(
-                children: [Text("Adult (£7.50)")])
+                spacing: 20,
+                children: [
+                DropdownMenu(
+                    initialSelection: 0,
+                    onSelected: (int? value) {
+                      setState(() {
+                        int? totalPrice = value;
+                      });
+                    },
+                    dropdownMenuEntries: [
+                      DropdownMenuEntry(value: 0, label: '0'),
+                      DropdownMenuEntry(value: 75, label: '1'),
+                      DropdownMenuEntry(value: 150, label: '2'),
+                      DropdownMenuEntry(value: 225, label: '3'),
+                      DropdownMenuEntry(value: 300, label: '4'),
+                      DropdownMenuEntry(value: 375, label: '5')
+                    ]),
+                Text("Adult (£7.50)")
+              ]),
+              
             ])));
   }
 }
