@@ -37,6 +37,11 @@ class _MovieListingButtons extends State<MovieListingButtons> {
             Text("Adult (£7.50)")
           ]),
           ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                shape: BeveledRectangleBorder(),
+                backgroundColor: cinemaBrand,
+                foregroundColor: cinemaFontWhite
+              ),
               onPressed: () {
                 setState(() {
                   if (buttonText == "Add to order") {
