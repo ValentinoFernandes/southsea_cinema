@@ -19,8 +19,10 @@ class _MovieListingButtons extends State<MovieListingButtons> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             spacing: 50,
-            children: [
-          Row(spacing: 20, children: [
+            children: [LayoutBuilder(
+              builder: (context, constraints){
+      if (constraints.maxWidth >600){
+          return Row(spacing: 20, children: [
             DropdownMenu(
                 initialSelection: 0,
                 onSelected: (int? value) {
@@ -35,7 +37,25 @@ class _MovieListingButtons extends State<MovieListingButtons> {
                   DropdownMenuEntry(value: 375, label: '5')
                 ]),
             Text("Adult (£7.50)")
-          ]),
+          ]);}
+          else{
+            return Column(
+              spacing:20, children:[
+            DropdownMenu(
+                initialSelection: 0,
+                onSelected: (int? value) {
+                  setState(() {});
+                },
+                dropdownMenuEntries: [
+                  DropdownMenuEntry(value: 0, label: '0'),
+                  DropdownMenuEntry(value: 75, label: '1'),
+                  DropdownMenuEntry(value: 150, label: '2'),
+                  DropdownMenuEntry(value: 225, label: '3'),
+                  DropdownMenuEntry(value: 300, label: '4'),
+                  DropdownMenuEntry(value: 375, label: '5')
+                ]),
+            Text("Adult (£7.50)")
+              ]);}}),
           ElevatedButton(
               style: ElevatedButton.styleFrom(
                 shape: BeveledRectangleBorder(),
