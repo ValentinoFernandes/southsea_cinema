@@ -1,13 +1,56 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
 
+class MovieListingButtons extends StatefulWidget {
+  @override
+  _MovieListingButtons createState() => _MovieListingButtons();
+}
+
+class _MovieListingButtons extends State<MovieListingButtons> {
+  String buttonText = "Add to order";
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            spacing: 50,
+            children: [
+          Row(spacing: 20, children: [
+            DropdownMenu(
+                initialSelection: 0,
+                onSelected: (int? value) {
+                  setState(() {});
+                },
+                dropdownMenuEntries: [
+                  DropdownMenuEntry(value: 0, label: '0'),
+                  DropdownMenuEntry(value: 75, label: '1'),
+                  DropdownMenuEntry(value: 150, label: '2'),
+                  DropdownMenuEntry(value: 225, label: '3'),
+                  DropdownMenuEntry(value: 300, label: '4'),
+                  DropdownMenuEntry(value: 375, label: '5')
+                ]),
+            Text("Adult (£7.50)")
+          ]),
+          ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  if (buttonText == "Add to order") {
+                    buttonText = "Ordered";
+                  } else {}
+                });
+              },
+              child: Text(buttonText))
+        ]));
+  }
+}
+
 class MovieListing extends StatelessWidget {
   const MovieListing({super.key});
-
-  void setState(Null Function() totalPrice) {
-    int totalPrice;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,27 +100,7 @@ class MovieListing extends StatelessWidget {
                     fontSize: 16,
                     fontWeight: FontWeight.normal,
                   )),
-              Row(
-                spacing: 20,
-                children: [
-                DropdownMenu(
-                    initialSelection: 0,
-                    onSelected: (int? value) {
-                      setState(() {
-                        int? totalPrice = value;
-                      });
-                    },
-                    dropdownMenuEntries: [
-                      DropdownMenuEntry(value: 0, label: '0'),
-                      DropdownMenuEntry(value: 75, label: '1'),
-                      DropdownMenuEntry(value: 150, label: '2'),
-                      DropdownMenuEntry(value: 225, label: '3'),
-                      DropdownMenuEntry(value: 300, label: '4'),
-                      DropdownMenuEntry(value: 375, label: '5')
-                    ]),
-                Text("Adult (£7.50)")
-              ]),
-              
+              MovieListingButtons(),
             ])));
   }
 }
