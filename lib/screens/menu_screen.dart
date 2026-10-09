@@ -13,7 +13,7 @@ class MenuScreen extends StatelessWidget {
 
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Sandwhich Menu'),
+          title: const Text('Movie Listings'),
         ),
         body: ListView.builder(
             itemCount: movies.length,

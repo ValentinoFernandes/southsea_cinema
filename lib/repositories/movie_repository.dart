@@ -5,6 +5,8 @@ class MovieRepository {
     return const [
       Movie(
           id: 'jurassic-park',
+          ageCat: '12A',
+          showingDate: 'September 19th, 18:20',
           name: 'Jurassic Park',
           description:
               'An industrialist invites some experts to visit his theme park of cloned dinosaurs. After a power failure, the creatures run loose, putting everyones lives, including his grandchildrens, in danger.',
@@ -12,6 +14,8 @@ class MovieRepository {
           imagePath: 'assets/images/jurassic-park.jpg'),
       Movie(
           id: 'jurassic-world',
+          ageCat: '12A',
+          showingDate: 'September 19th, 14:20',
           name: 'Jurassic World',
           description:
               'A new theme park, built on the original site of Jurassic Park, creates a genetically modified hybrid dinosaur, the Indominus Rex, which escapes containment and goes on a killing spree.',
