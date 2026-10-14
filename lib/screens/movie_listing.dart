@@ -7,13 +7,8 @@ import 'package:southsea_cinema/widgets/nav_drawer.dart';
 import 'package:southsea_cinema/models/movie.dart';
 
 class MovieListingButtons extends StatefulWidget {
-  final Movie movie;
   final int maxQuantity;
-  const MovieListingButtons({
-    super.key,
-    required this.movie,
-    this.maxQuantity = 5
-  });
+  const MovieListingButtons({super.key, this.maxQuantity = 5});
 
   @override
   _MovieListingButtons createState() => _MovieListingButtons();
@@ -24,10 +19,7 @@ class _MovieListingButtons extends State<MovieListingButtons> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-        title: Text('Book ${widget.movie.name}')),
-        body: Container(
+    return Container(
         color: cinemaBackground,
         child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -84,64 +76,51 @@ class _MovieListingButtons extends State<MovieListingButtons> {
                     });
                   },
                   child: Text(buttonText))
-            ])));
+            ]));
   }
 }
 
 class MovieListing extends StatelessWidget {
   final Movie movie;
-
   const MovieListing({super.key, required this.movie});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text("", style: cinemaHeaderStyle),
-          backgroundColor: cinemaSurface,
-          iconTheme: const IconThemeData(color: cinemaBrand),
-          elevation: 0,
-        ),
+        appBar: AppBar(title: Text('Book ${movie.name}')),
+        backgroundColor: cinemaSurface,
         drawer: const NavDrawer(),
         body: Container(
-            color: cinemaBackground,
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                spacing: 50,
-                children: [
-                  Text("${movie.name}  PG",
-                      style: TextStyle(
-                        color: cinemaFontWhite,
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                      )),
-                  Text("Southsea Cinema Room",
-                      style: TextStyle(
-                        color: cinemaFontWhite,
-                        fontSize: 16,
-                        fontWeight: FontWeight.normal,
-                      )),
-                  Text(movie.showingDate,
-                      style: TextStyle(
-                        color: cinemaFontWhite,
-                        fontSize: 16,
-                        fontWeight: FontWeight.normal,
-                      )),
-                  Text(
-                      "Please note that Discounts/ Membership Benefits will be applied once you have selected your tickets",
-                      style: TextStyle(
-                        color: cinemaFontWhite,
-                        fontSize: 16,
-                        fontWeight: FontWeight.normal,
-                      )),
-                  Text("Select Quantities (Up to 5 in total)",
-                      style: TextStyle(
-                        color: cinemaFontWhite,
-                        fontSize: 16,
-                        fontWeight: FontWeight.normal,
-                      )),
-                  MovieListingButtons(movie: movie),
-                ])));
+          color: cinemaBackground,
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              spacing: 50,
+              children: [
+                Text("${movie.name} ${movie.ageCat}",
+                    style: TextStyle(
+                      color: cinemaFontWhite,
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                    )),
+                Image.asset(movie.imagePath,
+                    width: 200, height: 300, fit: BoxFit.cover),
+                Text(movie.showingDate,
+                    style: TextStyle(
+                      color: cinemaFontWhite,
+                      fontSize: 16,
+                      fontWeight: FontWeight.normal,
+                    )),
+                Text(movie.description,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      color: cinemaFontWhite,
+                      fontSize: 16,
+                      fontWeight: FontWeight.normal,
+                    )),
+                MovieListingButtons(),
+              ]),
+        ));
   }
 }

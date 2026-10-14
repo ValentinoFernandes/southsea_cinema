@@ -24,7 +24,7 @@ class MovieCard extends StatelessWidget {
                 Image.asset(
                   movie.imagePath,
                   width: 200,
-                  height: 200,
+                  height: 300,
                   fit: BoxFit.cover,
                 ),
                 const SizedBox(width: 16),
@@ -43,15 +43,7 @@ class MovieCard extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        const SizedBox(height: 8),
-                        Text(
-                          movie.ageCat,
-                          style: const TextStyle(
-                            color: cinemaFontMuted,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
+
                         const SizedBox(height: 8),
                       ],
                     ),
@@ -68,13 +60,6 @@ class MovieCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  'Book tickets now!',
-                  style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: cinemaFontWhite),
-                ),
                 Text(
                   movie.showingDate,
                   style: const TextStyle(
