@@ -89,7 +89,9 @@ class _MovieListingButtons extends State<MovieListingButtons> {
 }
 
 class MovieListing extends StatelessWidget {
-  const MovieListing({super.key});
+  final Movie movie;
+
+  const MovieListing({super.key, required this.movie});
 
   @override
   Widget build(BuildContext context) {
@@ -108,7 +110,7 @@ class MovieListing extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 spacing: 50,
                 children: [
-                  Text("Jurassic Park (1993) PG",
+                  Text("${movie.name}  PG",
                       style: TextStyle(
                         color: cinemaFontWhite,
                         fontSize: 22,
@@ -120,7 +122,7 @@ class MovieListing extends StatelessWidget {
                         fontSize: 16,
                         fontWeight: FontWeight.normal,
                       )),
-                  Text("Sunday 27th Sept 2026, 14:00 - ends at 16:07",
+                  Text(movie.showingDate,
                       style: TextStyle(
                         color: cinemaFontWhite,
                         fontSize: 16,
@@ -139,7 +141,7 @@ class MovieListing extends StatelessWidget {
                         fontSize: 16,
                         fontWeight: FontWeight.normal,
                       )),
-                  MovieListingButtons(),
+                  MovieListingButtons(movie: movie),
                 ])));
   }
 }
