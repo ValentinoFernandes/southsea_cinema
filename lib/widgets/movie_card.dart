@@ -45,6 +45,15 @@ class MovieCard extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 8),
+                        Text(
+                          movie.name,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                            color: cinemaBrand,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ],
                     ),
                     const SizedBox(height: 8),

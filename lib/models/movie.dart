@@ -15,4 +15,6 @@ class Movie {
       required this.description,
       required this.price,
       required this.imagePath});
+
+  String get formattedPrice => '£${price.toStringAsFixed(2)}';
 }

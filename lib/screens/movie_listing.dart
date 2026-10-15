@@ -1,14 +1,15 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+//import 'package:flutter/services.dart';
 import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
 import 'package:southsea_cinema/models/movie.dart';
 
 class MovieListingButtons extends StatefulWidget {
   final int maxQuantity;
-  const MovieListingButtons({super.key, this.maxQuantity = 5});
+  final Movie movie;
+  const MovieListingButtons({super.key, this.maxQuantity = 5, required this.movie});
 
   @override
   _MovieListingButtons createState() => _MovieListingButtons();
@@ -27,7 +28,7 @@ class _MovieListingButtons extends State<MovieListingButtons> {
             spacing: 50,
             children: <Widget>[
               LayoutBuilder(builder: (context, constraints) {
-                if (constraints.maxWidth > 300) {
+                if (constraints.maxWidth > 600) {
                   return Row(spacing: 20, children: [
                     DropdownMenu(
                         initialSelection: 0,
@@ -59,7 +60,7 @@ class _MovieListingButtons extends State<MovieListingButtons> {
                           DropdownMenuEntry(value: 300, label: '4'),
                           DropdownMenuEntry(value: 375, label: '5')
                         ]),
-                    Text("Adult (£7.50)")
+                    Text("Adult (${widget.movie.formattedPrice})")
                   ]);
                 }
               }),
@@ -119,7 +120,7 @@ class MovieListing extends StatelessWidget {
                       fontSize: 16,
                       fontWeight: FontWeight.normal,
                     )),
-                MovieListingButtons(),
+                MovieListingButtons(movie: movie),
               ]),
         ));
   }
