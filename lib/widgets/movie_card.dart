@@ -46,7 +46,7 @@ class MovieCard extends StatelessWidget {
                         ),
                         const SizedBox(height: 8),
                         Text(
-                          movie.name,
+                          movie.ageCat,
                           overflow: TextOverflow.ellipsis,
                           style: const TextStyle(
                             color: cinemaBrand,
