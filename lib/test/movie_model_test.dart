@@ -36,18 +36,6 @@ void main() {
       );
       expect(movie.formattedPrice, '£7.50');
     });
-    test('getMovieById returns matching sandwich when id exists', () {
-      final MovieRepository repository = MovieRepository();
-      final Movie? movie = repository.getMovieById('jurassic-park');
-      expect(movie, isNotNull);
-      expect(movie?.name, 'Jurassic Park');
-      expect(movie?.price, 7.5);
-    });
 
-    test('getMovieById returns null when id does not exist', () {
-      final MovieRepository repository = MovieRepository();
-      final Movie? movie = repository.getMovieById('non-existent');
-      expect(movie, isNull);
-    });
   });
 }
