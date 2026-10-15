@@ -11,13 +11,13 @@ void main() {
         name: 'The Lost World',
         showingDate: '12th October 12:05',
         description: 'This is a test description',
-        price: 7.5,
+        price: 7,
         ageCat: 'PG',
       );
       expect(movie.id, 'the-lost-world');
       expect(movie.name, 'The Lost World');
       expect(movie.ageCat, 'PG');
-      expect(movie.price, 7.5);
+      expect(movie.price, 7);
       expect(movie.description, 'This is a test description');
       expect(movie.showingDate, '12th October 12:05');
       expect(movie.imagePath, 'assets/images/the-lost-world');
