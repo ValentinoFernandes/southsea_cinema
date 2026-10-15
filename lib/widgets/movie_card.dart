@@ -37,13 +37,13 @@ class MovieCard extends StatelessWidget {
                       children: [
                         Text(
                           movie.name,
+                          overflow: TextOverflow.ellipsis,
                           style: const TextStyle(
                             color: cinemaBrand,
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-
                         const SizedBox(height: 8),
                       ],
                     ),

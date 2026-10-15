@@ -27,7 +27,7 @@ class _MovieListingButtons extends State<MovieListingButtons> {
             spacing: 50,
             children: <Widget>[
               LayoutBuilder(builder: (context, constraints) {
-                if (constraints.maxWidth > 600) {
+                if (constraints.maxWidth > 300) {
                   return Row(spacing: 20, children: [
                     DropdownMenu(
                         initialSelection: 0,
