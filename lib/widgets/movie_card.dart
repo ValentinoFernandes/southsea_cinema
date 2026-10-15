@@ -15,7 +15,8 @@ class MovieCard extends StatelessWidget {
       margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 12.0),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Column(
+        child: SingleChildScrollView(
+          child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
@@ -93,6 +94,6 @@ class MovieCard extends StatelessWidget {
           ],
         ),
       ),
-    );
+    ));
   }
 }
