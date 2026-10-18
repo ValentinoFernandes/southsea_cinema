@@ -4,11 +4,15 @@ class Movie {
   final String description;
   final double price;
   final String imagePath;
+  final String ageCat;
+  final String showingDate;
 
   const Movie(
       {required this.id,
       required this.name,
       required this.description,
       required this.price,
-      required this.imagePath});
+      required this.imagePath, 
+      required this.ageCat, 
+      required this.showingDate});
 }
