@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/models/movie.dart';
 
 class MovieCard extends StatelessWidget {
@@ -8,6 +9,7 @@ class MovieCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: cinemaBackground,
       margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -33,6 +35,7 @@ class MovieCard extends StatelessWidget {
                           Text(
                             movie.name,
                             style: const TextStyle(
+                              color: cinemaBrandDark,
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
                             ),
@@ -41,6 +44,7 @@ class MovieCard extends StatelessWidget {
                           Text(
                             movie.ageCat,
                             style: const TextStyle(
+                              color: cinemaBrandDark,
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
                             ),
@@ -50,11 +54,13 @@ class MovieCard extends StatelessWidget {
                       const SizedBox(height: 8),
                       Text(
                         movie.description,
-                        style: const TextStyle(color: Colors.black54),
+                        style: const TextStyle(
+                        color: cinemaFontWhite,),
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
                       Text(movie.showingDate, style: const TextStyle(
+                          color: cinemaFontWhite,
                           fontSize: 16,
                           fontWeight: FontWeight.normal,
                         ),)
@@ -70,8 +76,9 @@ class MovieCard extends StatelessWidget {
                 Text(
                   '£${movie.price.toStringAsFixed(2)}',
                   style: const TextStyle(
+                    color: cinemaFontWhite,
                     fontSize: 16,
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.normal,
                   ),
                 ),
                 ElevatedButton(
