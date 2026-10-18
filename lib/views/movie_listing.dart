@@ -11,6 +11,7 @@ class MovieListing extends StatefulWidget {
 
 class _MovieListingState extends State<MovieListing> {
   int _ticketQuantity = 1;
+  String _bookingMessage = '';
 
   @override
   Widget build(BuildContext context) {
@@ -30,13 +31,37 @@ class _MovieListingState extends State<MovieListing> {
           crossAxisAlignment: CrossAxisAlignment.start,
           spacing: 15,
           children: [
-            const Text('Jurassic Park (1993) PG'),
-            const Text('Southsea Cinema Room'),
-            const Text('Friday 22 Sept 2026, 18:00-20:07'),
+            const Text('Jurassic Park (1993) PG',
+                style: TextStyle(
+                    color: cinemaFontWhite,
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold)),
+            const Text('Southsea Cinema Room',
+                style: TextStyle(
+                  color: cinemaFontWhite,
+                  fontSize: 16,
+                )),
+            const Text('Friday 22 Sept 2026, 18:00-20:07',
+                style: TextStyle(
+                  color: cinemaFontWhite,
+                  fontSize: 16,
+                )),
             const Text(
-                'Please note that discounts/ membership benefits will be applied once you have selected your tickets'),
-            const Text('Select quantities (up to 5 in total)'),
-            const Text('Tickets'),
+                'Please note that discounts/ membership benefits will be applied once you have selected your tickets',
+                style: TextStyle(
+                  color: cinemaFontWhite,
+                  fontSize: 16,
+                )),
+            const Text('Select quantities (up to 5 in total)',
+                style: TextStyle(
+                  color: cinemaFontWhite,
+                  fontSize: 16,
+                )),
+            const Text('Tickets',
+                style: TextStyle(
+                  color: cinemaFontWhite,
+                  fontSize: 16,
+                )),
             Row(children: [
               DropdownMenu<int>(
                 initialSelection: _ticketQuantity,
@@ -56,13 +81,33 @@ class _MovieListingState extends State<MovieListing> {
                   DropdownMenuEntry(value: 5, label: '5'),
                 ],
               ),
-              const Text('Adult(£7.50)')
+              const Text('Adult(£7.50)',
+                  style: TextStyle(
+                    color: cinemaFontWhite,
+                    fontSize: 16,
+                  ))
             ]),
             ElevatedButton(
                 onPressed: () {
-                  print('Add to order button pressed');
+                  setState(() {
+                    _bookingMessage = 'You ordered $_ticketQuantity tickets';
+                  });
                 },
-                child: const Text('Add to order'))
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: cinemaBrand,
+                  foregroundColor: cinemaFontWhite,
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.zero,
+                  ),
+                ),
+                child: const Text('Add to order')),
+            Text(
+              _bookingMessage,
+              style: TextStyle(
+                color: cinemaFontWhite,
+                fontSize: 16,
+              ),
+            )
           ],
         )),
       ),
