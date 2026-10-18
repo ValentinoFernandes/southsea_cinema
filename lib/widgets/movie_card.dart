@@ -19,27 +19,45 @@ class MovieCard extends StatelessWidget {
               children: [
                 Image.asset(
                   movie.imagePath,
-                  width: 80,
-                  height: 80,
-                  fit: BoxFit.cover,
+                  width: 200,
+                  height: 100,
+                  fit: BoxFit.fill,
                 ),
                 const SizedBox(width: 16),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        movie.name,
-                        style: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
+                      Row(
+                        children: [
+                          Text(
+                            movie.name,
+                            style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(width: 12,),
+                          Text(
+                            movie.ageCat,
+                            style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          )
+                        ],
                       ),
                       const SizedBox(height: 8),
                       Text(
                         movie.description,
                         style: const TextStyle(color: Colors.black54),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                       ),
+                      Text(movie.showingDate, style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.normal,
+                        ),)
                     ],
                   ),
                 ),
