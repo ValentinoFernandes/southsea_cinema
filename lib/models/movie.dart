@@ -3,9 +3,9 @@ class Movie {
   final String name;
   final String description;
   final double price;
-  final double imagePath;
+  final String imagePath;
 
-  Movie(
+  const Movie(
       {required this.id,
       required this.name,
       required this.description,
