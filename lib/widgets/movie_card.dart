@@ -35,41 +35,27 @@ class MovieCard extends StatelessWidget {
                         children: [
                           Text(
                             movie.name,
-                            style: const TextStyle(
-                              color: cinemaBrandDark,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
+                            style: cinemaHeaderStyle,
                           ),
                           const SizedBox(
                             width: 12,
                           ),
                           Text(
                             movie.ageCat,
-                            style: const TextStyle(
-                              color: cinemaBrandDark,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
+                            style: cinemaTextStyle,
                           )
                         ],
                       ),
                       const SizedBox(height: 8),
                       Text(
                         movie.description,
-                        style: const TextStyle(
-                          color: cinemaFontWhite,
-                        ),
+                        style: cinemaTextStyle,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
                       Text(
                         movie.showingDate,
-                        style: const TextStyle(
-                          color: cinemaFontWhite,
-                          fontSize: 16,
-                          fontWeight: FontWeight.normal,
-                        ),
+                        style: cinemaTextStyle,
                       )
                     ],
                   ),
@@ -82,13 +68,15 @@ class MovieCard extends StatelessWidget {
               children: [
                 Text(
                   '£${movie.price.toStringAsFixed(2)}',
-                  style: const TextStyle(
-                    color: cinemaFontWhite,
-                    fontSize: 16,
-                    fontWeight: FontWeight.normal,
-                  ),
+                  style: cinemaTextStyle,
                 ),
                 ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                  backgroundColor: cinemaBrand,
+                  foregroundColor: cinemaFontWhite,
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.zero,
+                  )),
                   onPressed: () {
                     Navigator.push(
                       context,
