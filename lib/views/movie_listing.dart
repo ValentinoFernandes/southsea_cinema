@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
+import 'package:southsea_cinema/models/movie.dart';
 
 class MovieListing extends StatefulWidget {
-  const MovieListing({super.key});
+  final Movie movie;
+  const MovieListing({required this.movie, super.key});
 
   @override
   State<MovieListing> createState() => _MovieListingState();
@@ -17,12 +19,16 @@ class _MovieListingState extends State<MovieListing> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          tooltip: MaterialLocalizations.of(context).backButtonTooltip,
+          onPressed: () => Navigator.pop(context),
+        ),
         title: const Text(appTitle, style: cinemaHeaderStyle),
         backgroundColor: cinemaSurface,
         iconTheme: const IconThemeData(color: cinemaBrand),
         elevation: 0,
       ),
-      drawer: const NavDrawer(),
       body: Container(
         color: cinemaBackground,
         child: SizedBox(
@@ -31,37 +37,35 @@ class _MovieListingState extends State<MovieListing> {
           crossAxisAlignment: CrossAxisAlignment.start,
           spacing: 15,
           children: [
-            const Text('Jurassic Park (1993) PG',
-                style: TextStyle(
-                    color: cinemaFontWhite,
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold)),
-            const Text('Southsea Cinema Room',
-                style: TextStyle(
-                  color: cinemaFontWhite,
-                  fontSize: 16,
-                )),
-            const Text('Friday 22 Sept 2026, 18:00-20:07',
-                style: TextStyle(
-                  color: cinemaFontWhite,
-                  fontSize: 16,
-                )),
+            Image.asset(
+              widget.movie.imagePath,
+              width: 200,
+              height: 100,
+              fit: BoxFit.fill,
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              spacing: 15,
+              children: [
+                Text(widget.movie.name,
+                    style: cinemaHeaderStyle),
+                const Text('Southsea Cinema Room',
+                    style: cinemaTextStyle,
+                    ),
+                Text(widget.movie.showingDate,
+                    style: cinemaTextStyle),
+              ],
+            ),
             const Text(
                 'Please note that discounts/ membership benefits will be applied once you have selected your tickets',
-                style: TextStyle(
-                  color: cinemaFontWhite,
-                  fontSize: 16,
-                )),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: cinemaTextStyle),
             const Text('Select quantities (up to 5 in total)',
-                style: TextStyle(
-                  color: cinemaFontWhite,
-                  fontSize: 16,
-                )),
+                style: cinemaTextStyle),
             const Text('Tickets',
-                style: TextStyle(
-                  color: cinemaFontWhite,
-                  fontSize: 16,
-                )),
+                style: cinemaTextStyle),
             LayoutBuilder(
               builder: (context, constraints) {
                 if (constraints.maxWidth > 600) {
@@ -73,7 +77,6 @@ class _MovieListingState extends State<MovieListing> {
                           if (value != null) {
                             setState(() {
                               _ticketQuantity = value;
-                              print('Tickets selected: $_ticketQuantity');
                             });
                           }
                         },
@@ -87,10 +90,7 @@ class _MovieListingState extends State<MovieListing> {
                       ),
                       const Text(
                         'Adult(£7.50)',
-                        style: TextStyle(
-                          color: cinemaFontWhite,
-                          fontSize: 16,
-                        ),
+                        style: cinemaTextStyle,
                       ),
                     ],
                   );
@@ -103,7 +103,6 @@ class _MovieListingState extends State<MovieListing> {
                           if (value != null) {
                             setState(() {
                               _ticketQuantity = value;
-                              print('Tickets selected: $_ticketQuantity');
                             });
                           }
                         },
@@ -117,17 +116,13 @@ class _MovieListingState extends State<MovieListing> {
                       ),
                       const Text(
                         'Adult(£7.50)',
-                        style: TextStyle(
-                          color: cinemaFontWhite,
-                          fontSize: 16,
-                        ),
+                        style: cinemaTextStyle,
                       ),
                     ],
                   );
                 }
               },
             ),
-
             ElevatedButton(
                 onPressed: () {
                   setState(() {
@@ -144,10 +139,7 @@ class _MovieListingState extends State<MovieListing> {
                 child: const Text('Add to order')),
             Text(
               _bookingMessage,
-              style: TextStyle(
-                color: cinemaFontWhite,
-                fontSize: 16,
-              ),
+              style: cinemaTextStyle,
             )
           ],
         )),

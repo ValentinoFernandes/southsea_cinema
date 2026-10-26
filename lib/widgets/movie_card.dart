@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/models/movie.dart';
+import 'package:southsea_cinema/views/movie_listing.dart';
 
 class MovieCard extends StatelessWidget {
   final Movie movie;
@@ -40,7 +41,9 @@ class MovieCard extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          const SizedBox(width: 12,),
+                          const SizedBox(
+                            width: 12,
+                          ),
                           Text(
                             movie.ageCat,
                             style: const TextStyle(
@@ -55,15 +58,19 @@ class MovieCard extends StatelessWidget {
                       Text(
                         movie.description,
                         style: const TextStyle(
-                        color: cinemaFontWhite,),
+                          color: cinemaFontWhite,
+                        ),
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
-                      Text(movie.showingDate, style: const TextStyle(
+                      Text(
+                        movie.showingDate,
+                        style: const TextStyle(
                           color: cinemaFontWhite,
                           fontSize: 16,
                           fontWeight: FontWeight.normal,
-                        ),)
+                        ),
+                      )
                     ],
                   ),
                 ),
@@ -82,7 +89,16 @@ class MovieCard extends StatelessWidget {
                   ),
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return MovieListing(movie: movie);
+                        },
+                      ),
+                    );
+                  },
                   child: const Text('Order'),
                 ),
               ],
