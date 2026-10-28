@@ -44,7 +44,7 @@ void main() {
       expect(movie?.price, 7.50);
     });
     test('getMovieById returns null when id does not exist', () {
-            final MovieRepository repository = MovieRepository();
+      final MovieRepository repository = MovieRepository();
       final Movie? movie = repository.getMovieById('non-existent');
 
       expect(movie, isNull);

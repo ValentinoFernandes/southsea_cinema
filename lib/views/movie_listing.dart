@@ -48,13 +48,12 @@ class _MovieListingState extends State<MovieListing> {
               crossAxisAlignment: CrossAxisAlignment.start,
               spacing: 15,
               children: [
-                Text('Order ${widget.movie.name}',
-                    style: cinemaHeaderStyle),
-                const Text('Southsea Cinema Room',
-                    style: cinemaTextStyle,
-                    ),
-                Text(widget.movie.showingDate,
-                    style: cinemaTextStyle),
+                Text('Order ${widget.movie.name}', style: cinemaHeaderStyle),
+                const Text(
+                  'Southsea Cinema Room',
+                  style: cinemaTextStyle,
+                ),
+                Text(widget.movie.showingDate, style: cinemaTextStyle),
               ],
             ),
             const Text(
@@ -64,8 +63,7 @@ class _MovieListingState extends State<MovieListing> {
                 style: cinemaTextStyle),
             const Text('Select quantities (up to 5 in total)',
                 style: cinemaTextStyle),
-            const Text('Tickets',
-                style: cinemaTextStyle),
+            const Text('Tickets', style: cinemaTextStyle),
             LayoutBuilder(
               builder: (context, constraints) {
                 if (constraints.maxWidth > 600) {
@@ -88,7 +86,7 @@ class _MovieListingState extends State<MovieListing> {
                           DropdownMenuEntry(value: 5, label: '5'),
                         ],
                       ),
-                       Text(
+                      Text(
                         'Adult(${widget.movie.formattedPrice})',
                         style: cinemaTextStyle,
                       ),

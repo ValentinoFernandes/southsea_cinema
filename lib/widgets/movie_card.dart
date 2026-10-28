@@ -72,11 +72,11 @@ class MovieCard extends StatelessWidget {
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                  backgroundColor: cinemaBrand,
-                  foregroundColor: cinemaFontWhite,
-                  shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.zero,
-                  )),
+                      backgroundColor: cinemaBrand,
+                      foregroundColor: cinemaFontWhite,
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.zero,
+                      )),
                   onPressed: () {
                     Navigator.push(
                       context,
