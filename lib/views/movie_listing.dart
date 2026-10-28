@@ -48,7 +48,7 @@ class _MovieListingState extends State<MovieListing> {
               crossAxisAlignment: CrossAxisAlignment.start,
               spacing: 15,
               children: [
-                Text(widget.movie.name,
+                Text('Order ${widget.movie.name}',
                     style: cinemaHeaderStyle),
                 const Text('Southsea Cinema Room',
                     style: cinemaTextStyle,
@@ -88,8 +88,8 @@ class _MovieListingState extends State<MovieListing> {
                           DropdownMenuEntry(value: 5, label: '5'),
                         ],
                       ),
-                      const Text(
-                        'Adult(£7.50)',
+                       Text(
+                        'Adult(${widget.movie.formattedPrice})',
                         style: cinemaTextStyle,
                       ),
                     ],
