@@ -12,12 +12,9 @@ class Movie {
       required this.name,
       required this.description,
       required this.price,
-      required this.imagePath, 
-      required this.ageCat, 
+      required this.imagePath,
+      required this.ageCat,
       required this.showingDate});
-  
-  String get formattedPrice {
-  final String formattedValue = price.toStringAsFixed(2);
-  return '£$formattedValue';
-}
+
+  String get formattedPrice => '£${price.toStringAsFixed(2)}';
 }
