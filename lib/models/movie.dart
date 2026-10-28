@@ -15,4 +15,9 @@ class Movie {
       required this.imagePath, 
       required this.ageCat, 
       required this.showingDate});
+  
+  String get formattedPrice {
+  final String formattedValue = price.toStringAsFixed(2);
+  return '£$formattedValue';
+}
 }
