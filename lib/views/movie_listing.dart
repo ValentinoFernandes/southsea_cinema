@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:southsea_cinema/constants.dart';
-import 'package:southsea_cinema/widgets/nav_drawer.dart';
 import 'package:southsea_cinema/models/movie.dart';
+import 'package:southsea_cinema/widgets/primary_button.dart';
 
 class MovieListing extends StatefulWidget {
   final Movie movie;
@@ -25,9 +25,6 @@ class _MovieListingState extends State<MovieListing> {
           onPressed: () => Navigator.pop(context),
         ),
         title: const Text(appTitle, style: cinemaHeaderStyle),
-        backgroundColor: cinemaSurface,
-        iconTheme: const IconThemeData(color: cinemaBrand),
-        elevation: 0,
       ),
       body: Container(
         color: cinemaBackground,
@@ -70,6 +67,7 @@ class _MovieListingState extends State<MovieListing> {
                   return Row(
                     children: [
                       DropdownMenu<int>(
+                        textStyle: cinemaTextStyle,
                         initialSelection: _ticketQuantity,
                         onSelected: (int? value) {
                           if (value != null) {
@@ -121,20 +119,15 @@ class _MovieListingState extends State<MovieListing> {
                 }
               },
             ),
-            ElevatedButton(
+            PrimaryButton(
+                label: 'Add to order',
                 onPressed: () {
                   setState(() {
                     _bookingMessage = 'You ordered $_ticketQuantity tickets';
                   });
                 },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: cinemaBrand,
-                  foregroundColor: cinemaFontWhite,
-                  shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.zero,
-                  ),
+
                 ),
-                child: const Text('Add to order')),
             Text(
               _bookingMessage,
               style: cinemaTextStyle,
