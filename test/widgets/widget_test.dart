@@ -9,6 +9,7 @@ void main() {
       await tester.pumpWidget(const MaterialApp(home: HomeView()));
       expect(find.byType(HomeView), findsOneWidget);
       expect(find.text('Southsea Cinema'), findsOneWidget);
+      expect(find.byIcon(Icons.shopping_basket), findsOneWidget);
     });
 
     testWidgets('Displays movie cards with names and prices',
