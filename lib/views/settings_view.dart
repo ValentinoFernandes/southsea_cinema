@@ -3,6 +3,12 @@ import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/models/user_settings.dart';
 import 'package:southsea_cinema/widgets/basket_button.dart';
 import 'package:southsea_cinema/widgets/primary_button.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+const String prefPatronNumber = 'patron_number';
+const String prefAddress = 'user_address';
+const String prefEmail = 'user_email';
+const String prefNewsletter = 'user_newsletter';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -14,6 +20,41 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
+  Future<void> _loadSettings() async {
+    final SharedPreferencesAsync prefs = SharedPreferencesAsync();
+    final String? savedPatronNumber = await prefs.getString(prefPatronNumber);
+    final String? savedAddress = await prefs.getString(prefAddress);
+    final String? savedEmail = await prefs.getString(prefEmail);
+    final bool? savedNewsletter = await prefs.getBool(prefNewsletter);
+    String name = '';
+    if (savedPatronNumber != null) {
+      name = savedPatronNumber;
+    }
+
+    String address = '';
+    if (savedAddress != null) {
+      address = savedAddress;
+    }
+
+    String email = '';
+    if (savedEmail != null) {
+      email = savedEmail;
+    }
+    bool newsletter = false;
+    if (savedNewsletter != null) {
+      newsletter = savedNewsletter;
+    }
+    if (!mounted) {
+      return;
+    }
+    setState(() {
+      _patronNumberController.text = name;
+      _addressController.text = address;
+      _emailController.text = email;
+      _receiveNewsletter = newsletter;
+    });
+  }
+
   late TextEditingController _patronNumberController;
   late TextEditingController _addressController;
   late TextEditingController _emailController;
@@ -26,6 +67,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     _patronNumberController = TextEditingController();
     _addressController = TextEditingController();
     _emailController = TextEditingController();
+    _loadSettings();
   }
 
   @override
@@ -35,29 +77,37 @@ class _SettingsScreenState extends State<SettingsScreen> {
     _emailController.dispose();
     super.dispose();
   }
-  void _resetProfile(){
+
+  void _resetProfile() {
     final UserSettings settings = UserSettings(
       patronNumber: '',
       address: '',
       email: '',
       recieveNewsLetter: false,
     );
-      setState(() {
+    setState(() {
       _confirmationMessage = 'Settings reset';
     });
   }
-  void _saveSettings() {
-    final String name = _patronNumberController.text.trim();
+
+  Future<void> _saveSettings() async {
+    final String patronNumber = _patronNumberController.text.trim();
     final String address = _addressController.text.trim();
     final String email = _emailController.text.trim();
-
+    final SharedPreferencesAsync prefs = SharedPreferencesAsync();
+    await prefs.setString(prefPatronNumber, patronNumber);
+    await prefs.setString(prefAddress, address);
+    await prefs.setString(prefEmail, email);
+    await prefs.setBool(prefNewsletter, _receiveNewsletter);
     final UserSettings settings = UserSettings(
-      patronNumber: name,
+      patronNumber: patronNumber,
       address: address,
       email: email,
       recieveNewsLetter: _receiveNewsletter,
     );
-
+    if (!mounted) {
+      return;
+    }
     setState(() {
       _confirmationMessage = 'Settings saved for ${settings.patronNumber}';
     });
@@ -133,15 +183,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
               const SizedBox(height: 20),
               SizedBox(
                 width: double.infinity,
-                child: Row(children:[
-                PrimaryButton(
-                  label: 'Reset Profile',
-                  onPressed: _resetProfile),
-                SizedBox(width:10),
-                PrimaryButton(
-                  label: 'Save Settings',
-                  onPressed: _saveSettings,
-                )]),
+                child: Row(children: [
+                  PrimaryButton(
+                      label: 'Reset Profile', onPressed: _resetProfile),
+                  SizedBox(width: 10),
+                  PrimaryButton(
+                    label: 'Save Settings',
+                    onPressed: _saveSettings,
+                  )
+                ]),
               ),
               if (_confirmationMessage.isNotEmpty) ...[
                 const SizedBox(height: 12),

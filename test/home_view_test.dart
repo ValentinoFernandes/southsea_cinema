@@ -4,9 +4,12 @@ import 'package:southsea_cinema/views/basket_view.dart';
 import 'package:southsea_cinema/views/home_view.dart';
 import 'package:southsea_cinema/widgets/movie_card.dart';
 import 'package:southsea_cinema/views/settings_view.dart';
-
+import 'package:flutter/services.dart';
 
 void main() {
+  setUp(() {
+    rootBundle.clear();
+  });
   testWidgets(
       'HomeView shows the movie list, settings button and a basket button', (
     WidgetTester tester,

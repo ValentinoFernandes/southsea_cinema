@@ -26,26 +26,32 @@ class MovieCard extends StatelessWidget {
                   width: 200,
                   height: 100,
                   fit: BoxFit.fill,
+                  errorBuilder: (
+                    BuildContext context,
+                    Object error,
+                    StackTrace? stackTrace,
+                  ) {
+                    return const SizedBox(
+                      width: 80,
+                      height: 80,
+                      child: Center(child: Text('Image unavailable')),
+                    );
+                  },
                 ),
                 const SizedBox(width: 16),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
-                        children: [
-                          Text(
-                            movie.name,
-                            style: cinemaHeaderStyle,
-                          ),
-                          const SizedBox(
-                            width: 12,
-                          ),
-                          Text(
-                            movie.ageCat,
-                            style: cinemaTextStyle,
-                          )
-                        ],
+                      Text(
+                        movie.name,
+                        style: cinemaHeaderStyle,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      Text(
+                        movie.ageCat,
+                        style: cinemaTextStyle,
+                        overflow: TextOverflow.ellipsis,
                       ),
                       const SizedBox(height: 8),
                       Text(

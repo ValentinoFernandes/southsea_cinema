@@ -16,5 +16,23 @@
         "imagePath": "assets/images/jurassic-world.jpg",
         "ageCat": "PG",
         "showingDate": "Oct 19th, 14:00-16:24"
-    }
+    },
+    {
+       "id" :"the-land-before-time",
+       "name":"The Land Before Time",
+       "ageCat": "12",
+       "description": "Littlefoot, a young plant-eating dinosaur, is orphaned after his mother perishes while protecting him from a vicious carnivore. With her last breath, she tells him how to get to the legendary Great Valley, where he will be reunited with others of his kind. With his friend Cera, Littlefoot sets out for the fabled land, meeting a variety of new friends along the way -- while also being tracked by the killer dinosaur that mortally wounded his mother.",
+       "showingDate":"Nov 17th, 19:00-20:08",
+       "price": 6.50,
+       "imagePath":"assets/images/the-land-before-time.jpg"
+    },
+    {
+        "id" :"nonexistent",
+        "name":"Nonexistent Movie",
+        "ageCat": "n/a",
+        "description":"Not real",
+        "showingDate":"Never",
+        "price":0.0,
+        "imagePath":"assets/images/nonexistent.jpg"
+     }
 ]

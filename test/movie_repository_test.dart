@@ -55,9 +55,13 @@ void main() {
     final MovieRepository repository = MovieRepository();
     final List<Movie> movies = await repository.loadMoviesFromAsset();
 
-    expect(movies.length, 2);
+    expect(movies.length, 4);
     expect(movies[0].id, 'jurassic-park');
     expect(movies[1].id, 'jurassic-world');
+    expect(movies[2].id, 'the-land-before-time');
+    expect(movies[2].price, 6.5);
+    expect(movies[3].id, 'nonexistent');
+    expect(movies[3].price, 0.0);
     expect(repository.getMovies(), movies);
   });
 }
