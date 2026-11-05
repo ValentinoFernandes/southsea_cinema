@@ -3,6 +3,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:southsea_cinema/views/basket_view.dart';
 import 'package:southsea_cinema/views/home_view.dart';
 import 'package:southsea_cinema/widgets/movie_card.dart';
+import 'package:southsea_cinema/views/settings_view.dart';
+
 
 void main() {
   testWidgets(
@@ -37,5 +39,27 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.byType(BasketScreen), findsOneWidget);
+  });
+  testWidgets('Tapping the settings button navigates to SettingsScreen', (
+    WidgetTester tester,
+  ) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        initialRoute: '/',
+        routes: <String, WidgetBuilder>{
+          '/': (BuildContext context) {
+            return const HomeView();
+          },
+          '/settings': (BuildContext context) {
+            return const SettingsScreen();
+          },
+        },
+      ),
+    );
+
+    await tester.tap(find.byIcon(Icons.person_outline));
+    await tester.pumpAndSettle();
+
+    expect(find.byType(SettingsScreen), findsOneWidget);
   });
 }
