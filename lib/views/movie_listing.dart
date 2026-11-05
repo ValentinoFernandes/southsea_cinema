@@ -15,7 +15,7 @@ class MovieListing extends StatefulWidget {
 }
 
 class _MovieListingState extends State<MovieListing> {
-  int _ticketQuantity = 1;
+  int _ticketQuantity = 0;
   String _confirmationMessage = '';
 
   void _addToBasket() {
@@ -101,6 +101,7 @@ class _MovieListingState extends State<MovieListing> {
                             }
                           },
                           dropdownMenuEntries: [
+                            DropdownMenuEntry(value: 0, label: '0'),
                             DropdownMenuEntry(value: 1, label: '1'),
                             DropdownMenuEntry(value: 2, label: '2'),
                             DropdownMenuEntry(value: 3, label: '3'),
@@ -127,6 +128,7 @@ class _MovieListingState extends State<MovieListing> {
                             }
                           },
                           dropdownMenuEntries: [
+                            DropdownMenuEntry(value: 0, label: '0'),
                             DropdownMenuEntry(value: 1, label: '1'),
                             DropdownMenuEntry(value: 2, label: '2'),
                             DropdownMenuEntry(value: 3, label: '3'),
@@ -144,6 +146,7 @@ class _MovieListingState extends State<MovieListing> {
                 },
               ),
               const SizedBox(height: 24),
+              
               SizedBox(
                 width: double.infinity,
                 child: PrimaryButton(

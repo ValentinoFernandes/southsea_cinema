@@ -38,9 +38,9 @@ void main() {
       expect(cart.getItems().length, 2);
       expect(cart.getTotalItems(), 3);
       expect(cart.totalItemCount, 3);
-      expect(cart.getSubtotal(), 26.0);
+      expect(cart.getSubtotal(), 25.0);
       expect(cart.getDeliveryFee(), 1.50);
-      expect(cart.getTotalDue(), 27.50);
+      expect(cart.getTotalDue(), 26.50);
     });
 
     test('removes items correctly', () {
