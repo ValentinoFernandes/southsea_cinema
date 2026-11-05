@@ -121,6 +121,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ),
                   Switch(
                     value: _receiveNewsletter,
+                    activeThumbColor: cinemaBrandLight,
                     onChanged: (bool value) {
                       setState(() {
                         _receiveNewsletter = value;
