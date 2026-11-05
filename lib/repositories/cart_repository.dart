@@ -28,7 +28,7 @@ class CartRepository {
   int get totalItemCount {
     return getTotalItems();
   }
-    double getSubtotal() {
+    double getTotal() {
     double sum = 0.0;
     for (final CartItem item in _items) {
       sum += item.lineTotal;
@@ -36,16 +36,7 @@ class CartRepository {
     return sum;
   }
 
-  double getDeliveryFee() {
-    if (_items.isEmpty) {
-      return 0.0;
-    }
-    return 1.50;
-  }
 
-  double getTotalDue() {
-    return getSubtotal() + getDeliveryFee();
-  }
     void clear() {
     _items.clear();
   }
