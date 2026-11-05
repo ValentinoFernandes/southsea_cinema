@@ -3,12 +3,13 @@ import 'package:southsea_cinema/models/cart_item.dart';
 class CartRepository {
   CartRepository._internal();
   static final CartRepository instance = CartRepository._internal();
-    final List<CartItem> _items = [];
+  final List<CartItem> _items = [];
 
   List<CartItem> getItems() {
     return List<CartItem>.unmodifiable(_items);
   }
-    void addItem(CartItem item) {
+
+  void addItem(CartItem item) {
     _items.add(item);
   }
 
@@ -17,7 +18,8 @@ class CartRepository {
       _items.removeAt(index);
     }
   }
-    int getTotalItems() {
+
+  int getTotalItems() {
     int total = 0;
     for (final CartItem item in _items) {
       total += item.quantity;
@@ -25,19 +27,31 @@ class CartRepository {
     return total;
   }
 
+  double getServiceFee() {
+    if (_items.isEmpty) {
+      return 0.0;
+    }
+    return 4;
+  }
+
   int get totalItemCount {
     return getTotalItems();
   }
-    double getTotal() {
+
+  double getSubTotal() {
     double sum = 0.0;
     for (final CartItem item in _items) {
       sum += item.lineTotal;
     }
+    sum;
     return sum;
   }
 
+  double getTotal() {
+    return getSubTotal() + getServiceFee();
+  }
 
-    void clear() {
+  void clear() {
     _items.clear();
   }
 }

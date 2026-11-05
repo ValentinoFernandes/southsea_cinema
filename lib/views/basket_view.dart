@@ -32,7 +32,8 @@ class _BasketScreenState extends State<BasketScreen> {
   Widget _buildTotalRow(String label, String value, {bool emphasise = false}) {
     final TextStyle style;
     if (emphasise) {
-      style = const TextStyle(color: cinemaFontWhite, fontWeight: FontWeight.bold, fontSize: 16);
+      style = const TextStyle(
+          color: cinemaFontWhite, fontWeight: FontWeight.bold, fontSize: 16);
     } else {
       style = const TextStyle(color: cinemaFontWhite);
     }
@@ -58,11 +59,15 @@ class _BasketScreenState extends State<BasketScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '${item.quantity} x ${item.movie.name}',
+                  '${item.quantity} Tickets',
                   style: cinemaTextStyle,
                 ),
+                Text(
+                    '${item.movie.name},${item.movie.showingDate}, southsea cinema room',
+                    style: cinemaTextStyle),
                 const SizedBox(height: 4),
-                Text('£${item.lineTotal.toStringAsFixed(2)}'),
+                Text('£${item.lineTotal.toStringAsFixed(2)}',
+                    style: cinemaTextStyle),
               ],
             ),
           ),
@@ -89,14 +94,18 @@ class _BasketScreenState extends State<BasketScreen> {
       final CartItem item = items[index];
       children.add(_buildLineItem(cart, item, index));
     }
-
+    children.add(const SizedBox(height: 24));
+    children.add(_buildTotalRow(
+      'Service charge',
+       '£4.0'));
     children.add(const SizedBox(height: 24));
     children.add(
       _buildTotalRow(
-        'Items subtotal',
+        'Items total',
         '£${cart.getTotal().toStringAsFixed(2)}',
       ),
     );
+
     children.add(const SizedBox(height: 24));
 
     children.add(
