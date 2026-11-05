@@ -23,7 +23,7 @@ class _BasketScreenState extends State<BasketScreen> {
         padding: EdgeInsets.symmetric(vertical: 32.0),
         child: Text(
           'Your basket is empty',
-          style: TextStyle(fontSize: 16, color: Colors.grey),
+          style: cinemaTextStyle,
         ),
       ),
     );
@@ -32,7 +32,7 @@ class _BasketScreenState extends State<BasketScreen> {
   Widget _buildTotalRow(String label, String value, {bool emphasise = false}) {
     final TextStyle style;
     if (emphasise) {
-      style = const TextStyle(fontWeight: FontWeight.bold, fontSize: 16);
+      style = const TextStyle(color: cinemaFontWhite, fontWeight: FontWeight.bold, fontSize: 16);
     } else {
       style = const TextStyle(color: cinemaFontWhite);
     }
@@ -41,8 +41,8 @@ class _BasketScreenState extends State<BasketScreen> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(label, style: style),
-          Text(value, style: style),
+          Text(label, style: cinemaTextStyle),
+          Text(value, style: cinemaTextStyle),
         ],
       ),
     );
@@ -59,7 +59,7 @@ class _BasketScreenState extends State<BasketScreen> {
               children: [
                 Text(
                   '${item.quantity} x ${item.movie.name}',
-                  style: const TextStyle(fontWeight: FontWeight.w600),
+                  style: cinemaTextStyle,
                 ),
                 const SizedBox(height: 4),
                 Text('£${item.lineTotal.toStringAsFixed(2)}'),
@@ -119,7 +119,7 @@ class _BasketScreenState extends State<BasketScreen> {
       children.add(
         Text(
           _confirmationMessage,
-          style: const TextStyle(fontWeight: FontWeight.bold),
+          style: cinemaHeaderStyle,
         ),
       );
     }
@@ -145,7 +145,7 @@ class _BasketScreenState extends State<BasketScreen> {
             const SizedBox(height: 12),
             Text(
               _confirmationMessage,
-              style: const TextStyle(fontWeight: FontWeight.bold),
+              style: cinemaHeaderStyle,
             ),
           ],
         );
