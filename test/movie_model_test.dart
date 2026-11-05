@@ -38,4 +38,37 @@ void main() {
       expect(movie.formattedPrice, '£7.50');
     });
   });
+  test('JSON conversion preserves every movie field', () {
+    final Map<String, dynamic> data = <String, dynamic>{
+      'ageCat': 'PG',
+      'price': 7.5,
+      'name': 'Jurassic World',
+      'id': 'jurassic-world',
+      'description': 'this is a test description',
+      'imagePath': 'assets/images/jurassic-world.jpg',
+      'showingDate': 'Oct 19th'
+    };
+    final Movie movie = Movie.fromJson(data);
+    expect(movie.id, 'jurassic-world');
+    expect(movie.name, 'Jurassic World');
+    expect(movie.ageCat, 'PG');
+    expect(movie.showingDate, 'Oct 19th');
+    expect(movie.description, 'this is a test description');
+    expect(movie.price, 7.5);
+    expect(movie.imagePath, 'assets/images/jurassic-world.jpg');
+  });
+  test('fromJson accepts a whole-number price', () {
+    final Map<String, dynamic> data = <String, dynamic>{
+      'ageCat': 'PG',
+      'price': 7,
+      'name': 'Jurassic World',
+      'id': 'jurassic-world',
+      'description': 'this is a test description',
+      'imagePath': 'assets/images/jurassic-world.jpg',
+      'showingDate': 'Oct 19th'
+    };
+    final Movie movie = Movie.fromJson(data);
+    expect(movie.price, 7.0);
+    expect(movie.price, isA<double>());
+  });
 }
