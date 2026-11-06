@@ -119,6 +119,7 @@ class _MovieListingState extends State<MovieListing> {
                     return Column(
                       children: [
                         DropdownMenu<int>(
+                          textStyle: cinemaTextStyle,
                           initialSelection: _ticketQuantity,
                           onSelected: (int? value) {
                             if (value != null) {
