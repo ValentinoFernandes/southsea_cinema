@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/models/user_settings.dart';
 import 'package:southsea_cinema/widgets/basket_button.dart';
@@ -78,17 +78,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
     super.dispose();
   }
 
-  void _resetProfile() {
-    final UserSettings settings = UserSettings(
-      patronNumber: '',
-      address: '',
-      email: '',
-      recieveNewsLetter: false,
-    );
-    setState(() {
-      _confirmationMessage = 'Settings reset';
-    });
-  }
 
   Future<void> _saveSettings() async {
     final String patronNumber = _patronNumberController.text.trim();
@@ -183,15 +172,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
               const SizedBox(height: 20),
               SizedBox(
                 width: double.infinity,
-                child: Row(children: [
-                  PrimaryButton(
-                      label: 'Reset Profile', onPressed: _resetProfile),
-                  SizedBox(width: 10),
+                child: 
                   PrimaryButton(
                     label: 'Save Settings',
                     onPressed: _saveSettings,
                   )
-                ]),
               ),
               if (_confirmationMessage.isNotEmpty) ...[
                 const SizedBox(height: 12),

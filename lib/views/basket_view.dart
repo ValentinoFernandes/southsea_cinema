@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/models/cart_item.dart';
 import 'package:southsea_cinema/repositories/cart_repository.dart';
@@ -32,18 +32,17 @@ class _BasketScreenState extends State<BasketScreen> {
   Widget _buildTotalRow(String label, String value, {bool emphasise = false}) {
     final TextStyle style;
     if (emphasise) {
-      style = const TextStyle(
-          color: cinemaFontWhite, fontWeight: FontWeight.bold, fontSize: 16);
+      style = cinemaHeaderStyle;
     } else {
-      style = const TextStyle(color: cinemaFontWhite);
+      style = cinemaTextStyle;
     }
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(label, style: cinemaTextStyle),
-          Text(value, style: cinemaTextStyle),
+          Text(label, style: style),
+          Text(value, style: style),
         ],
       ),
     );

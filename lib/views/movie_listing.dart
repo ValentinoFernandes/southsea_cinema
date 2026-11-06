@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/models/movie.dart';
 import 'package:southsea_cinema/widgets/primary_button.dart';
@@ -136,8 +136,8 @@ class _MovieListingState extends State<MovieListing> {
                             DropdownMenuEntry(value: 5, label: '5'),
                           ],
                         ),
-                        const Text(
-                          'Adult(£7.50)',
+                         Text(
+                          'Adult(${widget.movie.formattedPrice})',
                           style: cinemaTextStyle,
                         ),
                       ],
